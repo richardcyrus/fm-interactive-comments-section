@@ -1,0 +1,95 @@
+{
+  "name": "fm-interactive-comments-section",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "This is a solution to the Interactive comments section challenge on Frontend Mentor",
+  "author": {
+    "name": "Richard Cyrus",
+    "email": "hello@rcyrus.com",
+    "url": "https://www.richardcyrus.com"
+  },
+  "repository": {
+    "url": "git+https://github.com/richardcyrus/fm-interactive-comments-section.git",
+    "type": "git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "fix": "concurrently --raw npm:fix:*",
+    "fix:code": "eslint --cache --cache-location ./node_modules/.cache/eslint --fix \"**/*.[jt]s?(x)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{css,js,jsx,cjs,mjs,ts,tsx,md,mdx,astro,json}\"",
+    "lint": "concurrently --raw npm:lint:*",
+    "lint:code": "eslint --cache --cache-location ./node_modules/.cache/eslint \"**/*.[jt]s?(x)\"",
+    "preview": "vite preview",
+    "prepare": "husky",
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.1.1",
+    "@eslint/js": "^9.9.1",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-prettier": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@svgr/rollup": "^8.1.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.5.2",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "@vitest/eslint-plugin": "^1.1.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "jsdom": "^25.0.0",
+    "lint-staged": "^15.2.10",
+    "micromatch": "^4.0.8",
+    "postcss": "^8.4.43",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0",
+    "vite": "^5.4.2",
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^2.0.5"
+  },
+  "browserslist": {
+    "production": [
+      ">= 0.5%",
+      "last 2 major versions",
+      "not dead",
+      "Chrome >= 64",
+      "Edge >= 79",
+      "Firefox >= 67",
+      "Firefox ESR",
+      "opera >= 51",
+      "iOS >= 12",
+      "Safari >= 12",
+      "not Explorer <= 11",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 edge version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "volta": {
+    "node": "20.17.0"
+  }
+}
