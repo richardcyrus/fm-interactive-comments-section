@@ -62,8 +62,14 @@ Users should be able to:
 - [Vitest](https://vitest.dev/) - Next Generation Testing Framework
 - [Testing Library](https://testing-library.com) - Simple and complete testing utilities that encourage good testing practices
 - [tailwindcss](https://tailwindcss.com/) - A utility-first CSS framework
+- [Chrono](https://github.com/wanasit/chrono) - A natural language date parser in Javascript.
+- [Dexie.js](https://dexie.org/) - A Minimalistic Wrapper for IndexedDB
+- [fake-indexeddb](https://github.com/dumbmatter/fakeIndexedDB) - A pure JS in-memory implementation of the IndexedDB API
 
 ### Useful resources
+
+- [Convert relative time to datetime in Javascript](https://stackoverflow.com/questions/49689463/convert-relative-time-to-datetime-in-javascript)
+- [fakeIndexedDB and vitest](https://github.com/jsdom/jsdom/issues/3363#issuecomment-1921575184)
 
 ## Author
 
