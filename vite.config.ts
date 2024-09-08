@@ -42,7 +42,7 @@ export default defineConfig({
   },
   test: {
     css: { include: [/.*/] },
-    environment: 'jsdom',
+    environment: './test/environment.ts',
     exclude: [...configDefaults.exclude, '**/build/**', '**/e2e/**'],
     globals: true,
     include: ['./src/**/*.test.?(c|m)[jt]s?(x)'],
