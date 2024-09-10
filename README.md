@@ -70,6 +70,8 @@ Users should be able to:
 
 - [Convert relative time to datetime in Javascript](https://stackoverflow.com/questions/49689463/convert-relative-time-to-datetime-in-javascript)
 - [fakeIndexedDB and vitest](https://github.com/jsdom/jsdom/issues/3363#issuecomment-1921575184)
+- [Authentication with React Router v6: A complete guide](https://blog.logrocket.com/authentication-react-router-v6/)
+- [How to manage user authentication With React JS](https://dev.to/miracool/how-to-manage-user-authentication-with-react-js-3ic5)
 
 ## Author
 
