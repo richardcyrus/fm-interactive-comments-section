@@ -17,7 +17,7 @@ interface Comment {
   createdAt: Date | null
   score: number
   user: string
-  isReply?: 0 | 1
+  isReply?: number
   replyingTo?: string
   parentComment?: number
   replies?: Comment[]
@@ -29,10 +29,9 @@ interface CommentDTO {
   createdAt: string
   score: number
   user: string
-  isReply?: 0 | 1
+  isReply?: number
   replyingTo?: string
   parentComment?: number
-  replies?: CommentDTO[]
 }
 
 const db = new Dexie('CommentsDB') as Dexie & {
