@@ -17,7 +17,7 @@ interface Comment {
   createdAt: Date | null
   score: number
   user: string
-  isReply?: number
+  isReply: 0 | 1
   replyingTo?: string
   parentComment?: number
   replies?: Comment[]
@@ -29,7 +29,7 @@ interface CommentDTO {
   createdAt: string
   score: number
   user: string
-  isReply?: number
+  isReply: 0 | 1
   replyingTo?: string
   parentComment?: number
 }
@@ -50,7 +50,11 @@ db.on('populate', async function () {
   }
 
   for (let i = 0; i < comments.length; i++) {
-    const com: CommentDTO = comments[i]
+    const com: CommentDTO = {
+      ...comments[i],
+      // Make sure isReply is assigned a value of 0 or 1
+      isReply: comments[i].isReply === 1 ? 1 : 0,
+    }
     const comment: Comment = {
       ...com,
       createdAt: chrono.parseDate(com.createdAt),
