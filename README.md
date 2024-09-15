@@ -65,6 +65,7 @@ Users should be able to:
 - [Chrono](https://github.com/wanasit/chrono) - A natural language date parser in Javascript.
 - [Dexie.js](https://dexie.org/) - A Minimalistic Wrapper for IndexedDB
 - [fake-indexeddb](https://github.com/dumbmatter/fakeIndexedDB) - A pure JS in-memory implementation of the IndexedDB API
+- [shadcn/ui](Beautifully designed components that you can copy and paste into your apps.)
 
 ### Useful resources
 
