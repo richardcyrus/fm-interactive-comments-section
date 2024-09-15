@@ -64,5 +64,9 @@ db.on('populate', async function () {
   }
 })
 
-export { db }
+function recreateDB() {
+  return db.delete().then(() => db.open())
+}
+
+export { db, recreateDB }
 export type { Comment, CommentDTO, User }

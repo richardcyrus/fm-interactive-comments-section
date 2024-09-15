@@ -73,6 +73,7 @@ Users should be able to:
 - [fakeIndexedDB and vitest](https://github.com/jsdom/jsdom/issues/3363#issuecomment-1921575184)
 - [Authentication with React Router v6: A complete guide](https://blog.logrocket.com/authentication-react-router-v6/)
 - [How to manage user authentication With React JS](https://dev.to/miracool/how-to-manage-user-authentication-with-react-js-3ic5)
+- [Re-initialize Dexie](https://github.com/dexie/Dexie.js/issues/521#issuecomment-298136079)
 
 ## Author
 
