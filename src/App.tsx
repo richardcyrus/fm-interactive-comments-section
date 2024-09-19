@@ -5,11 +5,14 @@ function App() {
   const { currentUser } = useAuth()
 
   return (
-    <div id="container" className="container grid grid-rows-3 gap-4">
-      <aside className="sticky bg-white p-1 shadow-md">
+    <div
+      id="wrapper"
+      className="wrapper grid h-screen grid-rows-[auto_1fr_auto] gap-4"
+    >
+      <aside className="bg-white p-1 shadow-md">
         <UserSwitcher key={currentUser} currentUser={currentUser} />
       </aside>
-      <main>
+      <main className="overflow-auto">
         <h1 className="sr-only">Interactive comments section</h1>
       </main>
       <footer className="attribution border-t border-slate-200 p-2">

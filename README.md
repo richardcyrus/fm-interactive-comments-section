@@ -71,6 +71,7 @@ Users should be able to:
 ### What I learned
 
 - When building the reset to initial data functionality for the app, use the `key` prop on the `<UserSwitcher /`> component to force a re-render when the IndexedDB is re-initialized. This causes the displayed user to reset correctly.
+- In Dexie.js 4.x optimizations were introduced for the `useLiveQuery` hook. Those optimizations caused the user list selection to be multiplied each time IndexedDB was reset. To eliminate this issue, the optimization had to be disabled. This forces `useLiveQuery` to only update after transactions are committed (disables optimistic updates).
 
 ### Useful resources
 

@@ -34,7 +34,13 @@ interface CommentDTO {
   parentComment?: number
 }
 
-const db = new Dexie('CommentsDB') as Dexie & {
+/* Disable the cache to disable optimistic updates for liveQueries.
+   see https://dexie.org/docs/Dexie/Dexie, I found the hint here
+   https://github.com/dexie/Dexie.js/issues/1771#issuecomment-1655379662
+   This was used to solve the problem of duplicated entries in the user
+   list in the UserSwitcher component after using the reset button.
+*/
+const db = new Dexie('CommentsDB', { cache: 'disabled' }) as Dexie & {
   users: EntityTable<User, 'username'>
   comments: EntityTable<Comment, 'id'>
 }

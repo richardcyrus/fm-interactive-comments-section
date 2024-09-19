@@ -28,54 +28,70 @@ import { Check, ChevronsUpDown, RotateCcw } from 'lucide-react'
 import * as React from 'react'
 
 function UserSwitcher(props: { currentUser: string }) {
-  const users = useLiveQuery(() => getUsers(), [])
-  const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState(props.currentUser)
+  const [open, setOpen] = React.useState(false)
+
+  const { login, logout } = useAuth()
+
   const user = useLiveQuery(() => getUser(value), [value])
-  const { login } = useAuth()
+  const users = useLiveQuery(() => getUsers(), [], [])
+
+  async function resetEnvironment() {
+    logout()
+    await recreateDB()
+    await login('juliusomo')
+  }
 
   return (
-    <div className="user-switcher flex min-h-16 flex-row items-center justify-center gap-x-4 rounded-r-xl bg-white">
+    <div className="user-switcher flex min-h-16 flex-row items-end justify-center gap-x-8 rounded-r-xl bg-white">
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button
-              variant="outline"
-              className="h-10 w-10 rounded-full p-0"
-              onClick={async () => {
-                await recreateDB()
-                login('juliusomo')
-                setValue('juliusomo')
-              }}
-            >
-              <RotateCcw />
-              <span className="sr-only">Reset Environment</span>
-            </Button>
+            <div className="flex flex-col items-center">
+              <Button
+                id="reset"
+                variant="outline"
+                className="h-10 w-10 rounded-full p-0"
+                onClick={resetEnvironment}
+              >
+                <RotateCcw />
+                <span className="sr-only">Reset Environment</span>
+              </Button>
+              <label htmlFor="reset" className="text-xs">
+                Reset
+              </label>
+            </div>
           </TooltipTrigger>
           <TooltipContent>Reset Environment</TooltipContent>
         </Tooltip>
       </TooltipProvider>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={open}
-            className="h-[52px] w-[200px] justify-between"
-          >
-            {user ? (
-              <>
-                <Avatar
-                  username={user?.username}
-                  imageUrl={user?.image.webp || ''}
-                />
-                {user.username}
-              </>
-            ) : (
-              'Select User'
-            )}
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
+          <div className="flex flex-col items-center">
+            <Button
+              id="user-switcher"
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="h-[52px] w-[200px] justify-between"
+            >
+              {user ? (
+                <>
+                  <Avatar
+                    username={user?.username}
+                    imageUrl={user?.image.webp || ''}
+                  />
+                  {user.username}
+                </>
+              ) : (
+                'Select User'
+              )}
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+            <label htmlFor="user-switcher" className="text-xs">
+              Select a user
+            </label>
+          </div>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
           <Command>
