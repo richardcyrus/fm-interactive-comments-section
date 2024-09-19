@@ -13,6 +13,7 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
     - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
     - [Useful resources](#useful-resources)
   - [Author](#author)
 
@@ -65,11 +66,21 @@ Users should be able to:
 - [Chrono](https://github.com/wanasit/chrono) - A natural language date parser in Javascript.
 - [Dexie.js](https://dexie.org/) - A Minimalistic Wrapper for IndexedDB
 - [fake-indexeddb](https://github.com/dumbmatter/fakeIndexedDB) - A pure JS in-memory implementation of the IndexedDB API
+- [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components that you can copy and paste into your apps.
+
+### What I learned
+
+- When building the reset to initial data functionality for the app, use the `key` prop on the `<UserSwitcher /`> component to force a re-render when the IndexedDB is re-initialized. This causes the displayed user to reset correctly.
+- In Dexie.js 4.x optimizations were introduced for the `useLiveQuery` hook. Those optimizations caused the user list selection to be multiplied each time IndexedDB was reset. To eliminate this issue, the optimization had to be disabled. This forces `useLiveQuery` to only update after transactions are committed (disables optimistic updates).
 
 ### Useful resources
 
 - [Convert relative time to datetime in Javascript](https://stackoverflow.com/questions/49689463/convert-relative-time-to-datetime-in-javascript)
 - [fakeIndexedDB and vitest](https://github.com/jsdom/jsdom/issues/3363#issuecomment-1921575184)
+- [Authentication with React Router v6: A complete guide](https://blog.logrocket.com/authentication-react-router-v6/)
+- [How to manage user authentication With React JS](https://dev.to/miracool/how-to-manage-user-authentication-with-react-js-3ic5)
+- [Re-initialize Dexie](https://github.com/dexie/Dexie.js/issues/521#issuecomment-298136079)
+- [How and when to force a React component to re-render](https://blog.logrocket.com/how-when-to-force-react-component-re-render/)
 
 ## Author
 
