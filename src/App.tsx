@@ -7,15 +7,15 @@ function App() {
   return (
     <div
       id="wrapper"
-      className="wrapper grid h-screen grid-rows-[auto_1fr_auto] gap-4"
+      className="wrapper grid h-screen grid-rows-[auto_1fr_auto]"
     >
       <aside className="bg-white p-1 shadow-md">
         <UserSwitcher key={currentUser} currentUser={currentUser} />
       </aside>
-      <main className="overflow-auto">
+      <main className="overflow-auto px-4 py-8">
         <h1 className="sr-only">Interactive comments section</h1>
       </main>
-      <footer className="attribution border-t border-slate-200 p-2">
+      <footer className="attribution p-2">
         Challenge by{' '}
         <a
           href="https://www.frontendmentor.io?ref=challenge"
