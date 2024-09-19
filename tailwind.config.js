@@ -3,6 +3,29 @@ export default {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#000',
+      white: '#fff',
+      blue: {
+        300: 'hsl(var(--light-grayish-blue))',
+        500: 'hsl(var(--moderate-blue))',
+        950: 'hsl(var(--dark-blue))',
+      },
+      gray: {
+        100: 'hsl(var(--very-light-gray))',
+        200: 'hsl(var(--light-gray))',
+        600: 'hsl(var(--grayish-blue))',
+      },
+      red: {
+        200: 'hsl(var(--pale-red))',
+        600: 'hsl(var(--soft-red))',
+      },
+    },
+    fontFamily: {
+      sans: ['Rubik', 'system-ui'],
+    },
     extend: {
       borderRadius: {
         lg: 'var(--radius)',

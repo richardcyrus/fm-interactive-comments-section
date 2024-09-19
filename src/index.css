@@ -9,10 +9,22 @@
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
+
 @layer base {
   :root {
+    /* app specific colors */
+    --dark-blue: 212 24% 26%;
+    --moderate-blue: 238 40% 52%;
+    --grayish-blue: 211 10% 45%;
+    --light-grayish-blue: 239 57% 85%;
+    --soft-red: 358 79% 66%;
+    --pale-red: 357 100% 86%;
+    --light-gray: 223 19% 93%;
+    --very-light-gray: 228 33% 97%;
+
+    /* shadcn/ui colors */
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 211 10% 45%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
