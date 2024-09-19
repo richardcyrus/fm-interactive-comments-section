@@ -43,6 +43,16 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'react/prop-types': 'off',
+    },
+  },
+  {
+    files: ['**/components/ui/*.{js,jsx,ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-empty-object-type': 'off',
+      'react-refresh/only-export-components': 'off',
+      'react/no-unknown-property': 'off',
+      'react/prop-types': 'off',
     },
   },
   {
