@@ -6,8 +6,8 @@ function App() {
 
   return (
     <div id="container" className="container grid grid-rows-3 gap-4">
-      <aside className="sticky border-b border-slate-200 bg-white p-4">
-        <UserSwitcher currentUser={currentUser} />
+      <aside className="sticky bg-white p-1 shadow-md">
+        <UserSwitcher key={currentUser} currentUser={currentUser} />
       </aside>
       <main>
         <h1 className="sr-only">Interactive comments section</h1>
