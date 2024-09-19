@@ -44,9 +44,9 @@ db.version(1).stores({
   comments: '++id, score, createdAt, isReply, replyingTo, parentComment, user',
 })
 
-db.on('populate', async function () {
+db.on('populate', async function (transaction) {
   for (let i = 0; i < users.length; i++) {
-    await db.users.add(users[i])
+    transaction.table('users').add(users[i])
   }
 
   for (let i = 0; i < comments.length; i++) {
@@ -60,7 +60,7 @@ db.on('populate', async function () {
       createdAt: chrono.parseDate(com.createdAt),
     }
 
-    await db.comments.add(comment)
+    transaction.table('comments').add(comment)
   }
 })
 
