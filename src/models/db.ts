@@ -64,8 +64,8 @@ db.on('populate', async function (transaction) {
   }
 })
 
-function recreateDB() {
-  return db.delete().then(() => db.open())
+async function recreateDB() {
+  return db.delete({ disableAutoOpen: false })
 }
 
 export { db, recreateDB }
