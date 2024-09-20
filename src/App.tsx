@@ -16,7 +16,7 @@ function App() {
       <aside className="bg-white p-1 shadow-md">
         <UserSwitcher key={currentUser} currentUser={currentUser} />
       </aside>
-      <main className="m-auto overflow-auto px-4 py-8">
+      <main className="mx-auto overflow-auto px-4 py-8">
         <h1 className="sr-only">Interactive comments section</h1>
         {comments?.map((comment) => (
           <CommentCard comment={comment} key={comment.id} />
