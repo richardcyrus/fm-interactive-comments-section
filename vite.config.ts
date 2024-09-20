@@ -14,6 +14,9 @@ export default defineConfig({
   plugins: [
     svgr({
       svgrOptions: {
+        exportType: 'default',
+        ref: true,
+        titleProp: true,
         plugins: [
           '@svgr/plugin-svgo',
           '@svgr/plugin-jsx',
@@ -31,7 +34,7 @@ export default defineConfig({
           ],
         },
       },
-      include: '**/*.svg?react',
+      include: '**/*.svg',
     }),
     react(),
   ],

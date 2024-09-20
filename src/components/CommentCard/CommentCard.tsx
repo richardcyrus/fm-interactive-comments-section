@@ -4,9 +4,9 @@ import { getUser } from '@/models/users'
 import { formatDistanceToNow } from 'date-fns'
 import { useLiveQuery } from 'dexie-react-hooks'
 
-import IconMinus from '@/assets/icons/icon-minus.svg?react'
-import IconPlus from '@/assets/icons/icon-plus.svg?react'
-import IconReply from '@/assets/icons/icon-reply.svg?react'
+import IconMinus from '@/assets/icons/icon-minus.svg'
+import IconPlus from '@/assets/icons/icon-plus.svg'
+import IconReply from '@/assets/icons/icon-reply.svg'
 
 function CommentCard({ comment }: { comment: Comment }) {
   const user = useLiveQuery(() => getUser(comment.user), [comment.user])
