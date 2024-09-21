@@ -1,6 +1,6 @@
 function Avatar(props: { username: string; imageUrl: string }) {
   return (
-    <figure className="avatar h-10 w-10">
+    <figure className="avatar h-8 w-8">
       <img
         src={`${import.meta.env.BASE_URL}${props.imageUrl}`}
         alt={`Avatar of ${props.username}`}

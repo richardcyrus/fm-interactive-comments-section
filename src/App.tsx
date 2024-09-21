@@ -1,8 +1,12 @@
+import CommentCard from '@/components/CommentCard/CommentCard'
 import UserSwitcher from '@/components/UserSwitcher/UserSwitcher'
 import { useAuth } from '@/hooks/useAuth'
+import { getComments } from '@/models/comments'
+import { useLiveQuery } from 'dexie-react-hooks'
 
 function App() {
   const { currentUser } = useAuth()
+  const comments = useLiveQuery(() => getComments(), [], [])
 
   return (
     <div
@@ -12,8 +16,11 @@ function App() {
       <aside className="bg-white p-1 shadow-md">
         <UserSwitcher key={currentUser} currentUser={currentUser} />
       </aside>
-      <main className="overflow-auto px-4 py-8">
+      <main className="mx-auto overflow-auto px-4 py-8">
         <h1 className="sr-only">Interactive comments section</h1>
+        {comments?.map((comment) => (
+          <CommentCard comment={comment} key={comment.id} />
+        ))}
       </main>
       <footer className="attribution p-2">
         Challenge by{' '}

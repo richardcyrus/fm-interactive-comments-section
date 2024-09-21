@@ -81,6 +81,7 @@ Users should be able to:
 - [How to manage user authentication With React JS](https://dev.to/miracool/how-to-manage-user-authentication-with-react-js-3ic5)
 - [Re-initialize Dexie](https://github.com/dexie/Dexie.js/issues/521#issuecomment-298136079)
 - [How and when to force a React component to re-render](https://blog.logrocket.com/how-when-to-force-react-component-re-render/)
+- [Using React Testing Library with RadixUI](https://www.luisball.com/blog/using-radixui-with-react-testing-library)
 
 ## Author
 
