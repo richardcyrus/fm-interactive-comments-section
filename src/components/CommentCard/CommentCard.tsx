@@ -61,7 +61,7 @@ function CommentCard({
             comment.content
           )}
         </div>
-        <div className="flex h-10 w-[100px] items-center justify-between rounded-[10px] bg-gray-100 px-4 py-[10px] sm:col-start-1 sm:row-span-full sm:row-start-1 sm:h-[100px] sm:w-10 sm:flex-col">
+        <div className="flex h-10 w-[100px] items-center justify-between rounded-[10px] bg-gray-100 px-4 py-[10px] sm:col-start-1 sm:row-span-full sm:row-start-1 sm:h-[100px] sm:w-10 sm:flex-col sm:py-4">
           <button
             type="button"
             className="h-[11px] w-[11px] text-blue-300 hover:text-blue-500"
