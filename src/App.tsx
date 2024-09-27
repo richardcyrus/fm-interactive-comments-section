@@ -1,4 +1,5 @@
 import CommentCard from '@/components/CommentCard/CommentCard'
+import CommentForm from '@/components/CommentForm/CommentForm'
 import UserSwitcher from '@/components/UserSwitcher/UserSwitcher'
 import { useAuth } from '@/hooks/useAuth'
 import { getComments } from '@/models/comments'
@@ -21,6 +22,9 @@ function App() {
         {comments?.map((comment) => (
           <CommentCard comment={comment} key={comment.id} />
         ))}
+        <div className="mt-4 rounded-lg bg-white p-4 sm:p-6 sm:mt-5">
+          <CommentForm key={currentUser} />
+        </div>
       </main>
       <footer className="attribution p-2">
         Challenge by{' '}
