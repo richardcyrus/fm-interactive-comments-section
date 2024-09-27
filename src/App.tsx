@@ -22,7 +22,7 @@ function App() {
         {comments?.map((comment) => (
           <CommentCard comment={comment} key={comment.id} />
         ))}
-        <div className="mt-4 rounded-lg bg-white p-4 sm:p-6 sm:mt-5">
+        <div className="mt-4 rounded-lg bg-white p-4 sm:mt-5 sm:p-6">
           <CommentForm key={currentUser} />
         </div>
       </main>

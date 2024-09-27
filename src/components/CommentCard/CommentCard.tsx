@@ -5,12 +5,15 @@ import type { Comment } from '@/models/db'
 import { getUser } from '@/models/users'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useState } from 'react'
 
 import IconDelete from '@/assets/icons/icon-delete.svg'
 import IconEdit from '@/assets/icons/icon-edit.svg'
 import IconMinus from '@/assets/icons/icon-minus.svg'
 import IconPlus from '@/assets/icons/icon-plus.svg'
 import IconReply from '@/assets/icons/icon-reply.svg'
+
+import CommentForm from '@/components/CommentForm/CommentForm'
 
 function CommentCard({
   comment,
@@ -21,6 +24,7 @@ function CommentCard({
 }) {
   const user = useLiveQuery(() => getUser(comment.user), [comment.user])
   const { currentUser } = useAuth()
+  const [showReplyForm, setShowReplyForm] = useState(false)
 
   return (
     <>
@@ -96,8 +100,10 @@ function CommentCard({
         ) : (
           <div className="flex items-center justify-self-end sm:row-start-1">
             <button
+              type="button"
               className="flex items-center justify-self-end font-medium text-blue-500 hover:text-blue-300"
               data-comment-id={comment.id}
+              onClick={() => setShowReplyForm(!showReplyForm)}
             >
               <IconReply className="me-2 h-[13px] w-[14px]" />
               <span>Reply</span>
@@ -105,6 +111,20 @@ function CommentCard({
           </div>
         )}
       </div>
+      {showReplyForm ? (
+        <div className="mt-2 max-w-[730px] rounded-lg bg-white p-4 sm:p-6">
+          <CommentForm
+            comment={{
+              isReply: 1,
+              replyingTo: comment.user,
+              parentComment: comment.id,
+              content: '',
+              score: 0,
+              user: currentUser,
+            }}
+          />
+        </div>
+      ) : null}
       {comment.replies ? (
         <div className="mt-4 border-l-2 border-gray-200 ps-4 sm:ms-11 sm:mt-5 sm:ps-11">
           {comment.replies.map((reply) => (

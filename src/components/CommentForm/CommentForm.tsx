@@ -22,8 +22,8 @@ import { useLiveQuery } from 'dexie-react-hooks'
 const FormSchema = z.object({
   content: z
     .string()
-    .min(1, { message: 'Comment is required' })
-    .max(250, { message: 'Comment must not be longer than 250 characters.' }),
+    .min(1, { message: 'An entry is required' })
+    .max(250, { message: 'Cannot be longer than 250 characters.' }),
   score: z.number(),
   user: z.string(),
   isReply: z.union([z.literal(0), z.literal(1)]),
@@ -32,7 +32,7 @@ const FormSchema = z.object({
 })
 
 type CommentFormProps = {
-  comment?: Omit<Comment, 'replies' | 'createdAt'>
+  comment?: Omit<Comment, 'id' | 'replies' | 'createdAt'>
 }
 type FormValues = z.infer<typeof FormSchema>
 
@@ -98,7 +98,7 @@ function CommentForm({ comment }: CommentFormProps) {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="pt-2" />
             </FormItem>
           )}
         />
@@ -111,9 +111,9 @@ function CommentForm({ comment }: CommentFormProps) {
         </div>
         <Button
           type="submit"
-          className="ms-auto h-12 w-[104px] bg-blue-500 hover:bg-blue-300 sm:col-start-3 sm:row-start-1"
+          className="ms-auto h-12 w-[104px] bg-blue-500 uppercase hover:bg-blue-300 sm:col-start-3 sm:row-start-1"
         >
-          Send
+          {form.getValues('replyingTo') !== '' ? 'Reply' : 'Send'}
         </Button>
       </form>
     </Form>
