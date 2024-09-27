@@ -1,6 +1,11 @@
-function Avatar(props: { username: string; imageUrl: string }) {
+import { cn } from '@/lib/utils'
+function Avatar(props: {
+  username: string
+  imageUrl: string
+  className?: string
+}) {
   return (
-    <figure className="avatar h-8 w-8">
+    <figure className={cn('avatar h-8 w-8', props.className)}>
       <img
         src={`${import.meta.env.BASE_URL}${props.imageUrl}`}
         alt={`Avatar of ${props.username}`}
