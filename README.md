@@ -67,6 +67,8 @@ Users should be able to:
 - [Dexie.js](https://dexie.org/) - A Minimalistic Wrapper for IndexedDB
 - [fake-indexeddb](https://github.com/dumbmatter/fakeIndexedDB) - A pure JS in-memory implementation of the IndexedDB API
 - [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components that you can copy and paste into your apps.
+- [React Hook Form](https://react-hook-form.com/) - Performant, flexible and extensible forms with easy-to-use validation.
+- [Zod](https://zod.dev/) - TypeScript-first schema validation with static type inference
 
 ### What I learned
 
@@ -82,6 +84,7 @@ Users should be able to:
 - [Re-initialize Dexie](https://github.com/dexie/Dexie.js/issues/521#issuecomment-298136079)
 - [How and when to force a React component to re-render](https://blog.logrocket.com/how-when-to-force-react-component-re-render/)
 - [Using React Testing Library with RadixUI](https://www.luisball.com/blog/using-radixui-with-react-testing-library)
+- [Understanding React's key prop](https://kentcdodds.com/blog/understanding-reacts-key-prop)
 
 ## Author
 

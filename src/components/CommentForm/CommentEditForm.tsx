@@ -13,13 +13,10 @@ import {
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 
-import Avatar from '@/components/Avatar/Avatar'
-import { useAuth } from '@/hooks/useAuth'
 import type { Comment } from '@/models/db'
-import { getUser } from '@/models/users'
-import { useLiveQuery } from 'dexie-react-hooks'
 
 const FormSchema = z.object({
+  id: z.number(),
   content: z
     .string()
     .min(1, { message: 'An entry is required' })
@@ -32,19 +29,18 @@ const FormSchema = z.object({
 })
 
 type CommentFormProps = {
-  comment?: Omit<Comment, 'id' | 'replies' | 'createdAt'>
-  toggleReplyForm?: () => void
+  comment: Omit<Comment, 'replies' | 'createdAt'>
+  closeEditForm: () => void
 }
+
 type FormValues = z.infer<typeof FormSchema>
 
-function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
-  const { currentUser } = useAuth()
-  const user = useLiveQuery(() => getUser(currentUser), [currentUser])
-
+function CommentEditForm({ comment, closeEditForm }: CommentFormProps) {
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
     defaultValues: comment
       ? {
+          id: comment.id,
           content: comment.content,
           score: comment.score,
           user: comment.user,
@@ -52,19 +48,12 @@ function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
           replyingTo: comment.replyingTo,
           parentComment: comment.parentComment,
         }
-      : {
-          content: '',
-          score: 0,
-          user: currentUser,
-          isReply: 0,
-          replyingTo: '',
-          parentComment: 0,
-        },
+      : undefined,
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data)
-    if (toggleReplyForm !== undefined) toggleReplyForm()
+    if (closeEditForm !== undefined) closeEditForm()
     form.reset()
   }
 
@@ -76,10 +65,8 @@ function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit, onErrors)}
-        className="grid grid-cols-2 grid-rows-[minmax(0,1fr)_auto] gap-4 sm:grid-cols-[auto_1fr_auto] sm:grid-rows-1"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit, onErrors)} className="">
+        <input type="hidden" {...form.register('id')} />
         <input type="hidden" {...form.register('score')} />
         <input type="hidden" {...form.register('user')} />
         <input type="hidden" {...form.register('isReply')} />
@@ -91,7 +78,7 @@ function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
           control={form.control}
           name="content"
           render={({ field }) => (
-            <FormItem className="col-span-full sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:space-y-0">
+            <FormItem>
               <FormLabel className="sr-only">Comment</FormLabel>
               <FormControl>
                 <Textarea
@@ -104,22 +91,25 @@ function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
             </FormItem>
           )}
         />
-        <div className="my-auto sm:col-start-1 sm:row-start-1 sm:mt-0.5">
-          <Avatar
-            username={user?.username as string}
-            imageUrl={user?.image.webp || ''}
-            className="sm:h-10 sm:w-10"
-          />
+        <div className="mt-4 flex space-x-2">
+          <Button
+            type="button"
+            variant="outline"
+            className="ms-auto h-12 w-[104px] uppercase"
+            onClick={closeEditForm}
+          >
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            className="ms-auto h-12 w-[104px] bg-blue-500 uppercase hover:bg-blue-300"
+          >
+            Update
+          </Button>
         </div>
-        <Button
-          type="submit"
-          className="ms-auto h-12 w-[104px] bg-blue-500 uppercase hover:bg-blue-300 sm:col-start-3 sm:row-start-1"
-        >
-          {form.getValues('replyingTo') !== '' ? 'Reply' : 'Send'}
-        </Button>
       </form>
     </Form>
   )
 }
 
-export default CommentForm
+export default CommentEditForm

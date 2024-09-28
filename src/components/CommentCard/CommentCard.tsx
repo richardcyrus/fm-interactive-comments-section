@@ -13,6 +13,7 @@ import IconMinus from '@/assets/icons/icon-minus.svg'
 import IconPlus from '@/assets/icons/icon-plus.svg'
 import IconReply from '@/assets/icons/icon-reply.svg'
 
+import CommentEditForm from '@/components/CommentForm/CommentEditForm'
 import CommentForm from '@/components/CommentForm/CommentForm'
 
 function CommentCard({
@@ -25,6 +26,7 @@ function CommentCard({
   const user = useLiveQuery(() => getUser(comment.user), [comment.user])
   const { currentUser } = useAuth()
   const [showReplyForm, setShowReplyForm] = useState(false)
+  const [showEditForm, setShowEditForm] = useState(false)
 
   return (
     <>
@@ -54,7 +56,12 @@ function CommentCard({
           </div>
         </div>
         <div className="col-span-2 leading-6 text-gray-600 sm:col-start-2">
-          {comment.isReply ? (
+          {showEditForm ? (
+            <CommentEditForm
+              comment={comment}
+              closeEditForm={() => setShowEditForm(false)}
+            />
+          ) : comment.isReply ? (
             <>
               <span className="font-medium text-blue-500">
                 @{comment.replyingTo}
@@ -92,6 +99,7 @@ function CommentCard({
             <button
               className="flex items-center font-medium leading-6 text-blue-500 hover:text-blue-300"
               data-comment-id={comment.id}
+              onClick={() => setShowEditForm(!showEditForm)}
             >
               <IconEdit className="me-2 h-[14px] w-[14px]" />
               <span>Edit</span>
