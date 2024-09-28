@@ -122,6 +122,7 @@ function CommentCard({
               score: 0,
               user: currentUser,
             }}
+            toggleReplyForm={() => setShowReplyForm(!showReplyForm)}
           />
         </div>
       ) : null}

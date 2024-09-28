@@ -33,10 +33,11 @@ const FormSchema = z.object({
 
 type CommentFormProps = {
   comment?: Omit<Comment, 'id' | 'replies' | 'createdAt'>
+  toggleReplyForm?: () => void
 }
 type FormValues = z.infer<typeof FormSchema>
 
-function CommentForm({ comment }: CommentFormProps) {
+function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
   const { currentUser } = useAuth()
   const user = useLiveQuery(() => getUser(currentUser), [currentUser])
 
@@ -63,6 +64,7 @@ function CommentForm({ comment }: CommentFormProps) {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data)
+    if (toggleReplyForm !== undefined) toggleReplyForm()
     form.reset()
   }
 
