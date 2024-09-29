@@ -1,7 +1,7 @@
 import Avatar from '@/components/Avatar/Avatar'
 import { useAuth } from '@/hooks/useAuth'
 import { cn } from '@/lib/utils'
-import { deleteComment } from '@/models/comments'
+import { deleteComment, updateScore } from '@/models/comments'
 import type { Comment } from '@/models/db'
 import { getUser } from '@/models/users'
 import { formatDistanceToNowStrict } from 'date-fns'
@@ -91,6 +91,7 @@ function CommentCard({
           <div className="flex h-10 w-[100px] items-center justify-between rounded-[10px] bg-gray-100 px-4 py-[10px] sm:col-start-1 sm:row-span-full sm:row-start-1 sm:h-[100px] sm:w-10 sm:flex-col sm:py-4">
             <button
               type="button"
+              onClick={() => updateScore(comment.id, comment.score + 1)}
               className="h-[11px] w-[11px] text-blue-300 hover:text-blue-500"
             >
               <IconPlus />
@@ -98,6 +99,7 @@ function CommentCard({
             <span className="font-medium text-blue-500">{comment.score}</span>
             <button
               type="button"
+              onClick={() => updateScore(comment.id, comment.score - 1)}
               className="h-[3px] w-[11px] text-blue-300 hover:text-blue-500"
             >
               <IconMinus />
@@ -143,7 +145,9 @@ function CommentCard({
               comment={{
                 isReply: 1,
                 replyingTo: comment.user,
-                parentComment: comment.id,
+                parentComment: comment.isReply
+                  ? comment.parentComment
+                  : comment.id,
                 content: '',
                 score: 0,
                 user: currentUser,

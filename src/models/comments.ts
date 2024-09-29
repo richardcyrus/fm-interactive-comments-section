@@ -108,6 +108,17 @@ const updateComment = (id: number, updates: Partial<Comment>) =>
  */
 const deleteComment = (id: number) => db.comments.delete(id)
 
+/**
+ * Updates the score of a comment in the database.
+ *
+ * @param {number} id - The ID of the comment to update.
+ * @param {number} score - The new score of the comment.
+ * @return {void}
+ */
+const updateScore = (id: number, score: number) => {
+  db.comments.where('id').equals(id).modify({ score })
+}
+
 export {
   addComment,
   addCommentReply,
@@ -116,4 +127,5 @@ export {
   getCommentReplies,
   getComments,
   updateComment,
+  updateScore,
 }
