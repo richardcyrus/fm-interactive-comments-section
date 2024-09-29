@@ -15,6 +15,7 @@ import { Textarea } from '@/components/ui/textarea'
 
 import Avatar from '@/components/Avatar/Avatar'
 import { useAuth } from '@/hooks/useAuth'
+import { addComment, addCommentReply } from '@/models/comments'
 import type { Comment } from '@/models/db'
 import { getUser } from '@/models/users'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -62,22 +63,27 @@ function CommentForm({ comment, toggleReplyForm }: CommentFormProps) {
         },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
-    if (toggleReplyForm !== undefined) toggleReplyForm()
-    form.reset()
-  }
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    if (data.isReply === 1) {
+      await addCommentReply(
+        data.content,
+        data.score,
+        data.user,
+        data.replyingTo as string,
+        data.parentComment as number
+      )
+    } else {
+      await addComment(data.content, data.user)
+    }
 
-  // TODO: For troubleshooting only
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function onErrors(errors: any) {
-    console.log(errors)
+    form.reset()
+    if (toggleReplyForm !== undefined) toggleReplyForm()
   }
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit, onErrors)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="grid grid-cols-2 grid-rows-[minmax(0,1fr)_auto] gap-4 sm:grid-cols-[auto_1fr_auto] sm:grid-rows-1"
       >
         <input type="hidden" {...form.register('score')} />

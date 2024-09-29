@@ -51,17 +51,16 @@ const getCommentReplies = (id: number) =>
  * Adds a new comment to the database.
  *
  * @param {string} content - The content of the comment.
- * @param {number} score - The initial score of the comment.
  * @param {User} user - The user who made the comment.
  * @return {Promise<void>} A promise that resolves when the comment has been added.
  */
-const addComment = (content: string, score: number, user: string) =>
+const addComment = (content: string, user: string) =>
   db.comments.add({
     content,
     createdAt: new Date(),
-    score,
-    user,
     isReply: 0,
+    score: 0,
+    user,
   })
 
 /**
@@ -84,11 +83,11 @@ const addCommentReply = (
   db.comments.add({
     content,
     createdAt: new Date(),
+    isReply: 1,
+    parentComment,
+    replyingTo,
     score,
     user,
-    isReply: 1,
-    replyingTo,
-    parentComment,
   })
 
 /**

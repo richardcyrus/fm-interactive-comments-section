@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 
+import { updateComment } from '@/models/comments'
 import type { Comment } from '@/models/db'
 
 const FormSchema = z.object({
@@ -51,21 +52,15 @@ function CommentEditForm({ comment, closeEditForm }: CommentFormProps) {
       : undefined,
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
-    if (closeEditForm !== undefined) closeEditForm()
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    await updateComment(data.id, data)
     form.reset()
-  }
-
-  // TODO: For troubleshooting only
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function onErrors(errors: any) {
-    console.log(errors)
+    if (closeEditForm !== undefined) closeEditForm()
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit, onErrors)} className="">
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <input type="hidden" {...form.register('id')} />
         <input type="hidden" {...form.register('score')} />
         <input type="hidden" {...form.register('user')} />
