@@ -5,6 +5,7 @@ import {
   getUsers,
   updateUser,
 } from '@/models/users'
+import { describe, expect, it } from 'vitest'
 
 describe('users', () => {
   it('should get all users', async () => {

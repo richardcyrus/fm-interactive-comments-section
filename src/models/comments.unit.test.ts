@@ -7,7 +7,7 @@ import {
   getComments,
   updateComment,
 } from '@/models/comments'
-import { expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('comments', () => {
   it('should get all comments', async () => {

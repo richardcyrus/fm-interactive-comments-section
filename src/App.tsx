@@ -2,6 +2,7 @@ import CommentCard from '@/components/CommentCard/CommentCard'
 import CommentForm from '@/components/CommentForm/CommentForm'
 import UserSwitcher from '@/components/UserSwitcher/UserSwitcher'
 import { useAuth } from '@/hooks/useAuth'
+import '@/index.css'
 import { getComments } from '@/models/comments'
 import { useLiveQuery } from 'dexie-react-hooks'
 
