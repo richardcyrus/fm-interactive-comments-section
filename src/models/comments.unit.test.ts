@@ -7,7 +7,7 @@ import {
   getComments,
   updateComment,
 } from '@/models/comments'
-import { expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('comments', () => {
   it('should get all comments', async () => {
@@ -21,7 +21,7 @@ describe('comments', () => {
   })
 
   it('should add a comment', async () => {
-    const commentId = await addComment('test', 0, 'testuser')
+    const commentId = await addComment('test', 'testuser')
 
     const comment = await getComment(commentId)
     expect(comment).toHaveProperty('content', 'test')

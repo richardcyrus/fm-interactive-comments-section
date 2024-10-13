@@ -56,12 +56,9 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.test.{ts,tsx}'],
+    files: ['**/*.{browser,unit}.test.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: {
-        ...vitest.environments.env.globals,
-      },
     },
     plugins: {
       vitest,

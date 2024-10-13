@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
@@ -44,12 +44,12 @@ export default defineConfig({
     },
   },
   test: {
-    css: { include: [/.*/] },
-    environment: './test/environment.ts',
-    exclude: [...configDefaults.exclude, '**/build/**', '**/e2e/**'],
-    globals: true,
-    include: ['./src/**/*.test.?(c|m)[jt]s?(x)'],
-    setupFiles: ['./test/vitest-setup.ts'],
     passWithNoTests: true,
+    exclude: [
+      ...configDefaults.exclude,
+      '**/build/**',
+      '**/e2e/**',
+      '**/*.browser.test.ts',
+    ],
   },
 })
