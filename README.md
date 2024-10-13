@@ -16,6 +16,7 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
     - [What I learned](#what-i-learned)
     - [Useful resources](#useful-resources)
   - [Author](#author)
+  - [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -42,7 +43,9 @@ Users should be able to:
 
 ### Screenshot
 
-![Desktop design](./design/desktop-design.jpg)
+![Desktop](./design/desktop.jpg)
+![Tablet](./design/tablet.jpg)
+![Mobile](./design/mobile.jpg)
 
 ### Links
 
@@ -74,6 +77,8 @@ Users should be able to:
 
 - When building the reset to initial data functionality for the app, use the `key` prop on the `<UserSwitcher /`> component to force a re-render when the IndexedDB is re-initialized. This causes the displayed user to reset correctly.
 - In Dexie.js 4.x optimizations were introduced for the `useLiveQuery` hook. Those optimizations caused the user list selection to be multiplied each time IndexedDB was reset. To eliminate this issue, the optimization had to be disabled. This forces `useLiveQuery` to only update after transactions are committed (disables optimistic updates).
+- Themeing TailwindCSS
+- For the User Switcher, using React context to fake authentication.
 
 ### Useful resources
 
@@ -90,3 +95,7 @@ Users should be able to:
 
 - Website - [Richard Cyrus](https://www.richardcyrus.com)
 - Frontend Mentor - [@richardcyrus](https://www.frontendmentor.io/profile/richardcyrus)
+
+## Acknowledgements
+
+I took the User Switcher idea from [@ricardoychino](https://www.frontendmentor.io/profile/ricardoychino)
