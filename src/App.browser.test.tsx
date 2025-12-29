@@ -45,7 +45,7 @@ describe('Authenticated App', () => {
     expect(getItemSpy).toHaveBeenCalledWith('currentuser')
   })
 
-  describe('User switcher', () => {
+  describe.skip('User switcher', () => {
     it('renders a user switcher', async () => {
       render(<AuthedApp />)
 

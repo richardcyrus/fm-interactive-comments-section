@@ -15,10 +15,10 @@ function App() {
       id="wrapper"
       className="wrapper grid h-screen grid-rows-[auto_1fr_auto]"
     >
-      <aside className="bg-white p-1 shadow-md">
+      <aside className="hidden bg-white p-1 shadow-md">
         <UserSwitcher key={currentUser} currentUser={currentUser} />
       </aside>
-      <main className="mx-auto overflow-auto px-4 py-8">
+      <main className="mx-auto px-4 py-8">
         <h1 className="sr-only">Interactive comments section</h1>
         {comments?.map((comment) => (
           <CommentCard comment={comment} key={comment.id} />
