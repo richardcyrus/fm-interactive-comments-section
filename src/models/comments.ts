@@ -97,8 +97,10 @@ const addCommentReply = (
  * @param {Partial<Comment>} updates - The updated properties of the comment.
  * @return {Promise<void>} A promise that resolves when the comment has been updated.
  */
-const updateComment = (id: number, updates: Partial<Comment>) =>
-  db.comments.update(id, { ...updates })
+const updateComment = (id: number, updates: Partial<Comment>) => {
+  // @ts-expect-error TS2615
+  return db.comments.update(id, { ...updates })
+}
 
 /**
  * Deletes a comment from the database by its ID.
