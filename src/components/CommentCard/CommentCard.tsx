@@ -93,6 +93,7 @@ function CommentCard({
               type="button"
               onClick={() => updateScore(comment.id, comment.score + 1)}
               className="h-[11px] w-[11px] text-blue-300 hover:text-blue-500"
+              aria-label="Increase score"
             >
               <IconPlus />
             </button>
@@ -101,6 +102,7 @@ function CommentCard({
               type="button"
               onClick={() => updateScore(comment.id, comment.score - 1)}
               className="h-[3px] w-[11px] text-blue-300 hover:text-blue-500"
+              aria-label="Decrease score"
             >
               <IconMinus />
             </button>
